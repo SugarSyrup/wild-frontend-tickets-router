@@ -1,30 +1,34 @@
-import useUpdateTicketStatus from '../hooks/useUpdateTicketStatus';
+import { Link } from "react-router-dom";
 
-import { Ticket } from '../types';
+import useUpdateTicketStatus from "../hooks/useUpdateTicketStatus";
 
-export default function TicketItem({ ticket }: {
-  ticket: Ticket;
-}) {
+import { Ticket } from "../types";
+
+export default function TicketItem({ ticket }: { ticket: Ticket }) {
   const updateTicketStatus = useUpdateTicketStatus();
 
   const handleClick = () => {
     updateTicketStatus({
       id: ticket.id,
-      status: ticket.status === 'open' ? 'closed' : 'open',
+      status: ticket.status === "open" ? "closed" : "open",
     });
   };
 
   return (
     <li>
-      <div className="title">{ticket.title}</div>
-      <div className="status">
-        Status:
-        <span>{ticket.status === 'open' ? 'Open' : 'Closed'}</span>
-      </div>
-      <div className="comments">
-        Comments:
-        <span>{ticket.comments.length}</span>
-      </div>
+      <Link to={`/tickets/${ticket.id}`} className="ticket-link">
+        <div className="title">
+          <h2>{ticket.title}</h2>
+        </div>
+        <div className="status">
+          Status:
+          <span>{ticket.status === "open" ? "Open" : "Closed"}</span>
+        </div>
+        <div className="comments">
+          Comments:
+          <span>{ticket.comments.length}</span>
+        </div>
+      </Link>
     </li>
   );
 }

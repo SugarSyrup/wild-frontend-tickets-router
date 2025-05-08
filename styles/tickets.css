@@ -98,10 +98,19 @@ header {
   padding: 0;
   list-style: none;
 
+  
+
   li {
     margin-block: 2rem;
     padding: 2rem;
-    border: 1px solid #CCC;
+    border: 1px solid #CCC;  
+    text-decoration: none;
+    
+
+    .ticket-link{
+      text-decoration:none;
+      cursor:pointer;
+    }
 
     .title {
       margin-bottom: 1rem;
@@ -117,6 +126,7 @@ header {
           text-decoration: underline;
         }
       }
+
     }
 
     .status,
